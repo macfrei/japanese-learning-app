@@ -9,6 +9,7 @@ export default createGlobalStyle`
 
 body {
     margin: 0;
+    font-size: 1rem;
     font-family: sans-serif;
     line-height: 1.4;
 }
