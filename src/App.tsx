@@ -1,6 +1,6 @@
 import hiragana from './assets/hiragana';
 import katakana from './assets/katakana';
-import KanaTable from './components/KanaTable';
+import KanaTable from './components/KanaTable/KanaTable';
 
 function App() {
   const basicHiragana = hiragana.filter(({ type }) => type === 'basic');
