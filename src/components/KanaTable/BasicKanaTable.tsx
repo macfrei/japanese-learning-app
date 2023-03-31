@@ -1,6 +1,7 @@
-import styled from 'styled-components';
 import kanaType from '../../types/kana';
-import DataCell from './DataCell';
+import { Caption, Table } from './KanaTableStyles';
+import TableHead from './TableHead';
+import TableRow from './TableRow';
 
 type BasicKanaTableProps = {
   kana: kanaType[];
@@ -9,151 +10,67 @@ type BasicKanaTableProps = {
 
 export default function BasicKanaTable({ kana, caption }: BasicKanaTableProps) {
   const yKana = kana.filter(({ group }) => group === 'y');
-  const newYKanaArray = [
+  const newYKanaArray: kanaType[] = [
     yKana[0],
-    { pronunciation: '', id: '1', kana: '' },
+    { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
     yKana[1],
-    { pronunciation: '', id: '2', kana: '' },
+    { id: '2', pronunciation: '', kana: '', type: 'basic', group: '' },
     yKana[2],
   ];
 
   const wKana = kana.filter(({ group }) => group === 'w');
-  const newWKanaArray = [
+  const newWKanaArray: kanaType[] = [
     wKana[0],
-    { pronunciation: '', id: '1', kana: '' },
-    { pronunciation: '', id: '2', kana: '' },
-    { pronunciation: '', id: '3', kana: '' },
+    { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
+    { id: '2', pronunciation: '', kana: '', type: 'basic', group: '' },
+    { id: '3', pronunciation: '', kana: '', type: 'basic', group: '' },
     wKana[1],
   ];
 
   return (
     <Table>
       <Caption>{caption}</Caption>
-      <thead>
-        <Row>
-          <RowHeader></RowHeader>
-          <ColumnHeader>A</ColumnHeader>
-          <ColumnHeader>I</ColumnHeader>
-          <ColumnHeader>U</ColumnHeader>
-          <ColumnHeader>E</ColumnHeader>
-          <ColumnHeader>O</ColumnHeader>
-        </Row>
-      </thead>
+      <TableHead columnHeaders={['A', 'I', 'U', 'E', 'O']} />
       <tbody>
-        <Row>
-          <RowHeader scope="row">-</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'basic')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">K -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'k')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">S -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 's')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">T -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 't')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">N -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'n')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">H -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'h')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">M -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'm')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">Y -</RowHeader>
-          {newYKanaArray.map(({ pronunciation, id, kana }) => (
-            <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-          ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">R -</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'r')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">W -</RowHeader>
-          {newWKanaArray.map(({ pronunciation, id, kana }) => (
-            <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-          ))}
-        </Row>
-        <Row>
-          <RowHeader scope="row">N</RowHeader>
-          {kana
-            .filter(({ group }) => group === 'n/m')
-            .map(({ pronunciation, id, kana }) => (
-              <DataCell key={id} pronunciation={pronunciation} kana={kana} />
-            ))}
-        </Row>
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'basic')}
+          header="-"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'k')}
+          header="K -"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 's')}
+          header="S -"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 't')}
+          header="T -"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'n')}
+          header="N -"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'h')}
+          header="H -"
+        />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'm')}
+          header="M -"
+        />
+        <TableRow kana={newYKanaArray} header="Y -" />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'r')}
+          header="R -"
+        />
+        <TableRow kana={newWKanaArray} header="W -" />
+        <TableRow
+          kana={kana.filter(({ group }) => group === 'n/m')}
+          header="N/M"
+        />
       </tbody>
     </Table>
   );
 }
-
-const Caption = styled.caption`
-  font-size: 1.2rem;
-  padding: 12px;
-`;
-
-const Table = styled.table`
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const RowHeader = styled.th`
-  text-align: left;
-  font-weight: normal;
-  padding: 6px;
-  border: 1px solid black;
-  background-color: lightgray;
-`;
-
-const ColumnHeader = styled.th`
-  font-weight: normal;
-  padding: 6px;
-  background-color: lightgray;
-`;
-
-const Row = styled.tr`
-  border: 1px black solid;
-`;
