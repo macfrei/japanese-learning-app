@@ -328,7 +328,7 @@ const hiragana: kanaType[] = [
     pronunciation: 'GA',
     kana: 'が',
     type: 'tenten',
-    group: 'k',
+    group: 'g',
   },
   {
     id: 'h_gi',
