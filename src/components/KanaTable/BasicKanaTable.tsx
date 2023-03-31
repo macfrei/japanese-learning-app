@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import kanaType from '../../types/kana';
 import DataCell from './DataCell';
 
-type KanaTableProps = {
+type BasicKanaTableProps = {
   kana: kanaType[];
   caption: string;
 };
 
-export default function KanaTable({ kana, caption }: KanaTableProps) {
+export default function BasicKanaTable({ kana, caption }: BasicKanaTableProps) {
   const yKana = kana.filter(({ group }) => group === 'y');
   const newYKanaArray = [
     yKana[0],
