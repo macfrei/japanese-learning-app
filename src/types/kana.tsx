@@ -1,4 +1,4 @@
-type kanaType = {
+type KanaType = {
   id: string;
   pronunciation: string;
   kana: string;
@@ -6,4 +6,4 @@ type kanaType = {
   group: string;
 };
 
-export default kanaType;
+export default KanaType;

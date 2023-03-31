@@ -1,16 +1,16 @@
-import kanaType from '../../types/kana';
+import KanaType from '../../types/kana';
 import { Caption, Table } from './KanaTableStyles';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
 
 type BasicKanaTableProps = {
-  kana: kanaType[];
+  kana: KanaType[];
   caption: string;
 };
 
 export default function BasicKanaTable({ kana, caption }: BasicKanaTableProps) {
   const yKana = kana.filter(({ group }) => group === 'y');
-  const newYKanaArray: kanaType[] = [
+  const newYKanaArray: KanaType[] = [
     yKana[0],
     { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
     yKana[1],
@@ -19,7 +19,7 @@ export default function BasicKanaTable({ kana, caption }: BasicKanaTableProps) {
   ];
 
   const wKana = kana.filter(({ group }) => group === 'w');
-  const newWKanaArray: kanaType[] = [
+  const newWKanaArray: KanaType[] = [
     wKana[0],
     { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
     { id: '2', pronunciation: '', kana: '', type: 'basic', group: '' },

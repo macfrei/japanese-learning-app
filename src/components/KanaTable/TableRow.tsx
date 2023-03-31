@@ -1,9 +1,9 @@
-import kanaType from '../../types/kana';
+import KanaType from '../../types/kana';
 import DataCell from './DataCell';
 import { Row, RowHeader } from './KanaTableStyles';
 
 type TableRowProps = {
-  kana: kanaType[];
+  kana: KanaType[];
   header: string;
 };
 

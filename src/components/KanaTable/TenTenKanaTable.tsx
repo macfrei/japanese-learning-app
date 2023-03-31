@@ -1,10 +1,10 @@
-import kanaType from '../../types/kana';
+import KanaType from '../../types/kana';
 import { Caption, Table } from './KanaTableStyles';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
 
 type TenTenKanaTableProps = {
-  kana: kanaType[];
+  kana: KanaType[];
   caption: string;
 };
 
