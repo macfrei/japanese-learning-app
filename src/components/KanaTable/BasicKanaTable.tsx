@@ -1,4 +1,4 @@
-import KanaType from '../../types/kana';
+import { type KanaType, TypeOfKana } from '../../types/kana';
 import { Caption, Table } from './KanaTableStyles';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
@@ -12,18 +12,18 @@ export default function BasicKanaTable({ kana, caption }: BasicKanaTableProps) {
   const yKana = kana.filter(({ group }) => group === 'y');
   const newYKanaArray: KanaType[] = [
     yKana[0],
-    { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
+    { id: '1', pronunciation: '', kana: '', type: TypeOfKana.basic, group: '' },
     yKana[1],
-    { id: '2', pronunciation: '', kana: '', type: 'basic', group: '' },
+    { id: '2', pronunciation: '', kana: '', type: TypeOfKana.basic, group: '' },
     yKana[2],
   ];
 
   const wKana = kana.filter(({ group }) => group === 'w');
   const newWKanaArray: KanaType[] = [
     wKana[0],
-    { id: '1', pronunciation: '', kana: '', type: 'basic', group: '' },
-    { id: '2', pronunciation: '', kana: '', type: 'basic', group: '' },
-    { id: '3', pronunciation: '', kana: '', type: 'basic', group: '' },
+    { id: '1', pronunciation: '', kana: '', type: TypeOfKana.basic, group: '' },
+    { id: '2', pronunciation: '', kana: '', type: TypeOfKana.basic, group: '' },
+    { id: '3', pronunciation: '', kana: '', type: TypeOfKana.basic, group: '' },
     wKana[1],
   ];
 

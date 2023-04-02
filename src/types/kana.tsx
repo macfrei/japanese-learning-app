@@ -1,9 +1,16 @@
+enum TypeOfKana {
+  basic = 'basic',
+  tenten = 'tenten',
+  yoon = 'yoon',
+}
+
 type KanaType = {
   id: string;
   pronunciation: string;
   kana: string;
-  type: 'basic' | 'tenten' | 'yoon';
+  type: TypeOfKana;
   group: string;
 };
 
-export default KanaType;
+export { TypeOfKana };
+export type { KanaType };

@@ -3,16 +3,25 @@ import katakana from './assets/katakana';
 import BasicKanaTable from './components/KanaTable/BasicKanaTable';
 import TenTenKanaTable from './components/KanaTable/TenTenKanaTable';
 import YoonKanaTable from './components/KanaTable/YoonKanaTable';
+import { TypeOfKana } from './types/kana';
 
 function App() {
-  const basicHiragana = hiragana.filter(({ type }) => type === 'basic');
-  const basicKatakana = katakana.filter(({ type }) => type === 'basic');
+  const basicHiragana = hiragana.filter(
+    ({ type }) => type === TypeOfKana.basic
+  );
+  const basicKatakana = katakana.filter(
+    ({ type }) => type === TypeOfKana.basic
+  );
 
-  const tentenHiragana = hiragana.filter(({ type }) => type === 'tenten');
-  const tentenKatakana = katakana.filter(({ type }) => type === 'tenten');
+  const tentenHiragana = hiragana.filter(
+    ({ type }) => type === TypeOfKana.tenten
+  );
+  const tentenKatakana = katakana.filter(
+    ({ type }) => type === TypeOfKana.tenten
+  );
 
-  const yoonHiragana = hiragana.filter(({ type }) => type === 'yoon');
-  const yoonKatakana = katakana.filter(({ type }) => type === 'yoon');
+  const yoonHiragana = hiragana.filter(({ type }) => type === TypeOfKana.yoon);
+  const yoonKatakana = katakana.filter(({ type }) => type === TypeOfKana.yoon);
   return (
     <div>
       <BasicKanaTable kana={basicHiragana} caption="Basic Hiragana Table" />

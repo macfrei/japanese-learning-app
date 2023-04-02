@@ -1,4 +1,4 @@
-import KanaType from '../../types/kana';
+import { KanaType } from '../../types/kana';
 import DataCell from './DataCell';
 import { Row, RowHeader } from './KanaTableStyles';
 

@@ -1,4 +1,4 @@
-import KanaType from '../../types/kana';
+import { KanaType } from '../../types/kana';
 import { Caption, Table } from './KanaTableStyles';
 import TableHead from './TableHead';
 import TableRow from './TableRow';
