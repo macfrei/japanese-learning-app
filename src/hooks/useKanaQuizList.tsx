@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { KanaType } from '../types/kana';
-import { sample, sampleSize } from 'lodash';
+import { sample, sampleSize, shuffle } from 'lodash';
 import { Answer, CurrentQuestion, HookReturn } from '../types/kanaQuiz';
 
 export default function useKanaQuizList(kana: KanaType[]): HookReturn {
@@ -21,10 +21,11 @@ export default function useKanaQuizList(kana: KanaType[]): HookReturn {
       defaultList.filter(kana => kana.id !== question?.id),
       3
     );
+    const shuffledAnswers = shuffle([question, ...answers]);
 
     const initialQuestion = {
       question,
-      answers: [question, ...answers],
+      answers: shuffledAnswers,
     };
 
     return initialQuestion;
