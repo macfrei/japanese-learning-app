@@ -7,6 +7,7 @@ type Question = KanaType | undefined;
 
 export default function useKanaQuizList(kana: KanaType[]) {
   const [quizKana, setQuizKana] = useState(kana);
+  const [feedback, setFeedback] = useState('');
   const [quizStats, setQuizStats] = useState({ right: 0, wrong: 0, tries: 0 });
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(
@@ -39,7 +40,7 @@ export default function useKanaQuizList(kana: KanaType[]) {
         tries: quizStats.tries + 1,
       });
       setIsDisabled(true);
-      console.log('Please try again');
+      setFeedback('Please try again!');
     }
 
     if (answer?.id === currentQuestion.question?.id) {
@@ -49,6 +50,7 @@ export default function useKanaQuizList(kana: KanaType[]) {
         tries: quizStats.tries + 1,
       });
       setIsDisabled(false);
+      setFeedback('Nice job, ready for the next question?');
     }
   }
 
@@ -60,6 +62,7 @@ export default function useKanaQuizList(kana: KanaType[]) {
     setIsDisabled(true);
     const newQuestion = createNewQuestion(quizKanaWithoutCurrentQuestion, kana);
     setCurrentQuestion(newQuestion);
+    setFeedback('');
   }
 
   return {
@@ -67,6 +70,7 @@ export default function useKanaQuizList(kana: KanaType[]) {
     isDisabled,
     currentQuestion,
     quizStats,
+    feedback,
     getNewQuestion,
     checkAnswer,
   };

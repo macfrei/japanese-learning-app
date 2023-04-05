@@ -12,6 +12,7 @@ export default function KanaQuiz({ kana }: KanaQuizProps) {
     isDisabled,
     currentQuestion,
     quizStats,
+    feedback,
     getNewQuestion,
     checkAnswer,
   } = useKanaQuizList(kana);
@@ -37,6 +38,7 @@ export default function KanaQuiz({ kana }: KanaQuizProps) {
           </label>
         ))}
       </fieldset>
+      {feedback.length > 0 && <p>{feedback}</p>}
       {quizKanaLength > 1 && (
         <button type="button" onClick={getNewQuestion} disabled={isDisabled}>
           Next
