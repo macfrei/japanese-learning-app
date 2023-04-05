@@ -1,6 +1,6 @@
 import hiragana from './assets/hiragana';
 import katakana from './assets/katakana';
-import KanaQuiz from './components/KanaQuiz';
+import KanaQuiz from './components/KanaQuiz/KanaQuiz';
 import BasicKanaTable from './components/KanaTable/BasicKanaTable';
 import TenTenKanaTable from './components/KanaTable/TenTenKanaTable';
 import YoonKanaTable from './components/KanaTable/YoonKanaTable';

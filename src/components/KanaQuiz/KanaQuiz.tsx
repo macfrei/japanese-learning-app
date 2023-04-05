@@ -1,6 +1,7 @@
 import React from 'react';
-import useKanaQuizList from '../hooks/useKanaQuizList';
-import { KanaType } from '../types/kana';
+import useKanaQuizList from '../../hooks/useKanaQuizList';
+import { KanaType } from '../../types/kana';
+import Question from './Question';
 
 type KanaQuizProps = {
   kana: KanaType[];
@@ -24,20 +25,7 @@ export default function KanaQuiz({ kana }: KanaQuizProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>{currentQuestion.question?.kana}</legend>
-        {currentQuestion.answers.map(answer => (
-          <label key={answer?.id}>
-            {answer?.pronunciation}
-            <input
-              type="radio"
-              name={currentQuestion.question?.kana}
-              value={answer?.kana}
-              onChange={() => checkAnswer(answer)}
-            />
-          </label>
-        ))}
-      </fieldset>
+      <Question currentQuestion={currentQuestion} onChange={checkAnswer} />
       {feedback.length > 0 && <p>{feedback}</p>}
       {quizKanaLength > 1 && (
         <button type="button" onClick={getNewQuestion} disabled={isDisabled}>
