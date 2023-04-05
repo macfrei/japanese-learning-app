@@ -2,10 +2,23 @@ import { useState } from 'react';
 import { KanaType } from '../types/kana';
 import { sample, sampleSize } from 'lodash';
 
+// Becuase of Lodash. Can I overwrite the Lodash Types to get rid of the undefined?
 type Answer = KanaType | undefined;
 type Question = KanaType | undefined;
+type CurrentQuestion = { question: Question; answers: Answer[] };
+type QuizStats = { right: number; wrong: number; tries: number };
 
-export default function useKanaQuizList(kana: KanaType[]) {
+type HookReturn = {
+  quizKanaLength: number;
+  isDisabled: boolean;
+  currentQuestion: CurrentQuestion;
+  quizStats: QuizStats;
+  feedback: string;
+  getNewQuestion: () => void;
+  checkAnswer: (answer: Answer) => void;
+};
+
+export default function useKanaQuizList(kana: KanaType[]): HookReturn {
   const [quizKana, setQuizKana] = useState(kana);
   const [feedback, setFeedback] = useState('');
   const [quizStats, setQuizStats] = useState({ right: 0, wrong: 0, tries: 0 });
@@ -17,7 +30,7 @@ export default function useKanaQuizList(kana: KanaType[]) {
   function createNewQuestion(
     currentList: KanaType[],
     defaultList: KanaType[]
-  ): { question: Question; answers: Answer[] } {
+  ): CurrentQuestion {
     const question = sample(currentList);
     const answers = sampleSize(
       defaultList.filter(kana => kana.id !== question?.id),
@@ -58,9 +71,10 @@ export default function useKanaQuizList(kana: KanaType[]) {
     const quizKanaWithoutCurrentQuestion = quizKana.filter(
       kana => kana.id !== currentQuestion.question?.id
     );
+    const newQuestion = createNewQuestion(quizKanaWithoutCurrentQuestion, kana);
+
     setQuizKana(quizKanaWithoutCurrentQuestion);
     setIsDisabled(true);
-    const newQuestion = createNewQuestion(quizKanaWithoutCurrentQuestion, kana);
     setCurrentQuestion(newQuestion);
     setFeedback('');
   }
