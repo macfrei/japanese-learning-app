@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { Answer, CurrentQuestion } from '../../types/kanaQuiz';
+import { KanaType } from '../../types/kana';
+import { CurrentQuestion } from '../../types/kanaQuiz';
 
 type QuestionProps = {
   currentQuestion: CurrentQuestion;
-  onChange: (answer: Answer) => void;
+  onChange: (answer: KanaType) => void;
 };
 
 export default function Question({ currentQuestion, onChange }: QuestionProps) {

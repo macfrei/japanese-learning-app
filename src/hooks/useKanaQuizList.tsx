@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { KanaType } from '../types/kana';
 import { sample, sampleSize, shuffle } from 'lodash';
-import { Answer, CurrentQuestion, HookReturn } from '../types/kanaQuiz';
+import { CurrentQuestion, HookReturn } from '../types/kanaQuiz';
 
 export default function useKanaQuizList(kana: KanaType[]): HookReturn {
   const [quizKana, setQuizKana] = useState(kana);
@@ -16,7 +16,7 @@ export default function useKanaQuizList(kana: KanaType[]): HookReturn {
     currentList: KanaType[],
     defaultList: KanaType[]
   ): CurrentQuestion {
-    const question = sample(currentList);
+    const question = sample(currentList) as KanaType;
     const answers = sampleSize(
       defaultList.filter(kana => kana.id !== question?.id),
       3
@@ -31,8 +31,8 @@ export default function useKanaQuizList(kana: KanaType[]): HookReturn {
     return initialQuestion;
   }
 
-  function checkAnswer(answer: Answer) {
-    if (answer?.id !== currentQuestion.question?.id) {
+  function checkAnswer(answer: KanaType) {
+    if (answer.id !== currentQuestion.question.id) {
       setQuizStats({
         ...quizStats,
         wrong: quizStats.wrong + 1,
@@ -42,7 +42,7 @@ export default function useKanaQuizList(kana: KanaType[]): HookReturn {
       setFeedback('Please try again!');
     }
 
-    if (answer?.id === currentQuestion.question?.id) {
+    if (answer.id === currentQuestion.question.id) {
       setQuizStats({
         ...quizStats,
         right: quizStats.right + 1,
@@ -55,7 +55,7 @@ export default function useKanaQuizList(kana: KanaType[]): HookReturn {
 
   function getNewQuestion() {
     const quizKanaWithoutCurrentQuestion = quizKana.filter(
-      kana => kana.id !== currentQuestion.question?.id
+      kana => kana.id !== currentQuestion.question.id
     );
     const newQuestion = createNewQuestion(quizKanaWithoutCurrentQuestion, kana);
 

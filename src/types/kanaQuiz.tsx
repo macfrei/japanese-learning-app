@@ -1,9 +1,6 @@
 import { KanaType } from './kana';
 
-// Becuase of Lodash. Can I overwrite the Lodash Types to get rid of the undefined?
-type Answer = KanaType | undefined;
-type Question = KanaType | undefined;
-type CurrentQuestion = { question: Question; answers: Answer[] };
+type CurrentQuestion = { question: KanaType; answers: KanaType[] };
 type QuizStats = { right: number; wrong: number; tries: number };
 
 type HookReturn = {
@@ -13,7 +10,7 @@ type HookReturn = {
   quizStats: QuizStats;
   feedback: string;
   getNewQuestion: () => void;
-  checkAnswer: (answer: Answer) => void;
+  checkAnswer: (answer: KanaType) => void;
 };
 
-export type { Answer, Question, CurrentQuestion, QuizStats, HookReturn };
+export type { CurrentQuestion, QuizStats, HookReturn };
