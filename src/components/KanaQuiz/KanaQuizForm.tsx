@@ -4,7 +4,7 @@ import useKanaQuizList from '../../hooks/useKanaQuizList';
 import { KanaType } from '../../types/kana';
 import Question from './Question';
 
-type KanaQuizProps = {
+type KanaQuizFormProps = {
   kana: KanaType[];
 };
 
@@ -12,7 +12,7 @@ type FeedbackProps = {
   isRight: boolean;
 };
 
-export default function KanaQuiz({ kana }: KanaQuizProps) {
+export default function KanaQuizForm({ kana }: KanaQuizFormProps) {
   const {
     quizKanaLength,
     isDisabled,
