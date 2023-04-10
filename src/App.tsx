@@ -1,6 +1,6 @@
 import hiragana from './assets/hiragana';
 import katakana from './assets/katakana';
-import KanaQuizForm from './components/KanaQuiz/KanaQuizForm';
+import KanaQuiz from './components/KanaQuiz/KanaQuiz';
 import BasicKanaTable from './components/KanaTable/BasicKanaTable';
 import TenTenKanaTable from './components/KanaTable/TenTenKanaTable';
 import YoonKanaTable from './components/KanaTable/YoonKanaTable';
@@ -25,7 +25,7 @@ function App() {
   const yoonKatakana = katakana.filter(({ type }) => type === TypeOfKana.yoon);
   return (
     <div>
-      <KanaQuizForm kana={yoonHiragana} />
+      <KanaQuiz kana={yoonHiragana} />
       <BasicKanaTable kana={basicHiragana} caption="Basic Hiragana Table" />
       <BasicKanaTable kana={basicKatakana} caption="Basic Katakana Table" />
       <TenTenKanaTable kana={tentenHiragana} caption="Tenten Hiragana Table" />
