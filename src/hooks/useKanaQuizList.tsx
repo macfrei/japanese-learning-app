@@ -6,7 +6,12 @@ import { CurrentQuestion, HookReturn } from '../types/kanaQuiz';
 export default function useKanaQuizList(kana: KanaType[]): HookReturn {
   const [quizKana, setQuizKana] = useState(kana);
   const [feedback, setFeedback] = useState('');
-  const [quizStats, setQuizStats] = useState({ right: 0, wrong: 0, tries: 0 });
+  const [quizStats, setQuizStats] = useState({
+    right: 0,
+    wrong: 0,
+    tries: 0,
+    isCompleted: false,
+  });
   const [isDisabled, setIsDisabled] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(
     createNewQuestion(quizKana, kana)

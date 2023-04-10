@@ -1,7 +1,12 @@
 import { KanaType } from './kana';
 
 type CurrentQuestion = { question: KanaType; answers: KanaType[] };
-type QuizStats = { right: number; wrong: number; tries: number };
+type QuizStats = {
+  right: number;
+  wrong: number;
+  tries: number;
+  isCompleted: boolean;
+};
 
 type HookReturn = {
   quizKanaLength: number;
