@@ -3,16 +3,21 @@ import styled from 'styled-components';
 import useKanaQuizList from '../../hooks/useKanaQuizList';
 import { KanaType } from '../../types/kana';
 import Question from './Question';
+import { QuizStats } from '../../types/kanaQuiz';
 
 type KanaQuizFormProps = {
   kana: KanaType[];
+  onFinishQuiz: (arg0: QuizStats) => void;
 };
 
 type FeedbackProps = {
   isRight: boolean;
 };
 
-export default function KanaQuizForm({ kana }: KanaQuizFormProps) {
+export default function KanaQuizForm({
+  kana,
+  onFinishQuiz,
+}: KanaQuizFormProps) {
   const {
     quizKanaLength,
     isDisabled,
@@ -25,7 +30,8 @@ export default function KanaQuizForm({ kana }: KanaQuizFormProps) {
 
   function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
-    console.log(quizStats);
+    const completedQuizStats = { ...quizStats, isCompleted: true };
+    onFinishQuiz(completedQuizStats);
   }
 
   return (
